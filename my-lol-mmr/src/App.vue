@@ -2,13 +2,25 @@
   <div id="app">
     <header class="app-header">
       <img class="logo" src="./assets/images/logo.png" alt="My LOL MMR 로고">
+      <AppSearchBox></AppSearchBox>
     </header>
     <router-view></router-view>
-    <footer class="app-footer">
-      
-    </footer>
+    <AppFooter></AppFooter>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import AppFooter from './components/AppFooter.vue';
+import AppSearchBox from './components/AppSearchBox.vue';
+
+export default Vue.extend({
+  components: {
+    AppFooter,
+    AppSearchBox
+  },
+})
+</script>
 
 <style>
 /* 기본값 초기화 */
@@ -44,9 +56,12 @@ ul, li {
 }
 .logo {
   width: 120px;
+  margin-left: 25px;
 }
 .app-footer {
   height: 60px;
-  background: #04001E;
+  display: flex;
+  justify-content: center;
+  background-color: #04001E;
 }
 </style>
