@@ -1,13 +1,13 @@
 <template>
     <div class="search_box">
-        <select class="country-select" v-model="countrySelect">
+        <select class="country_select" v-model="countrySelect">
             <option value="na">NA</option>
             <option value="euw">EUW</option>
             <option value="eune">EUNE</option>
             <option value="kr" selected>KR</option>
         </select>
         <span class="line"></span>
-        <input class="summer-name" placeholder="소환사명" v-model="summerNameInput" @keyup.enter="summerNameSearch">
+        <input class="summer_name" placeholder="소환사명" v-model="summerNameInput" @keyup.enter="summerNameSearch">
         <div class="icon_box">
             <i class="fa fas fa-search" v-if="!summerNameInput"></i>
             <i class="fa fas fa-times" @click="summerNameReset" v-else></i>
@@ -37,12 +37,12 @@
                     summerName: this.summerNameInput
                 }
 
-                console.log('user search', data);
-                this.$emit('userSearch', data);
+                this.$store.dispatch('searchUser', data);
+                this.$router.push(data.summerName).catch(() => { undefined });
             },
             summerNameReset() {
                 this.summerNameInput = '';
-            }
+            },
         },
     })
 </script>
@@ -58,16 +58,19 @@
     align-items: center;
     background-color: white;
 }
-.country-select, .summer-name {
+.country_select, .summer_name {
     padding: 5px 10px;
     border: none;
     font-size: 14px;
 }
-.country-select:focus, .summer-name:focus {
+.country_select:focus, .summer_name:focus {
     outline: none;
 }
-.country-select {
-    width: 80px;
+.country_select {
+    width: 25%;
+}
+.summer_name {
+    width: 60%;
 }
 .line {
     width: 1px;
