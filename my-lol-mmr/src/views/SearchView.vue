@@ -7,13 +7,34 @@
             </div>
             <div class="search_card_box">
                 <div class="card">
-                    {{ $store.state.userData.ranked.avg }}
+                    <div class="card_title">
+                        <h2>랭크</h2>
+                        <h1 v-if="$store.state.userData.ranked.avg">{{ $store.state.userData.ranked.avg }}</h1>
+                        <p v-else>데이터가 부족합니다</p>
+                    </div>
+                    <div class="card_avg_img_box">
+                        <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
+                    </div>
                 </div>
                 <div class="card">
-                    {{ $store.state.userData.normal.avg }}
+                    <div class="card_title">
+                        <h2>일반</h2>
+                        <h1 v-if="$store.state.userData.normal.avg">{{ $store.state.userData.normal.avg }}</h1>
+                        <p v-else>데이터가 부족합니다</p>
+                    </div>
+                    <div class="card_avg_img_box">
+                        <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
+                    </div>
                 </div>
                 <div class="card">
-                    {{ $store.state.userData.ARAM.avg }}
+                    <div class="card_title">
+                        <h2>칼바람 나락</h2>
+                        <h1 v-if="$store.state.userData.ARAM.avg">{{ $store.state.userData.ARAM.avg }}</h1>
+                        <p v-else>데이터가 부족합니다</p>
+                    </div>
+                    <div class="card_avg_img_box">
+                        <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,5 +92,26 @@
 }
 .card:nth-child(3) {
     background-image: url(../assets/images/aram.png);
+}
+.card_title {
+    height: 80px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center ;
+}
+.card_title h2 {
+    margin-right: 15px;
+}
+.card_title h1 {
+    font-size: 40px;
+}
+.card_title p {
+    color: #FF6D6D;
+}
+.card_avg_img_box {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

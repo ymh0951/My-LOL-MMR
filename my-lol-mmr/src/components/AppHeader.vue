@@ -1,6 +1,8 @@
 <template>
     <header class="app_header">
-      <img class="logo" src="../assets/images/logo.png" alt="My LOL MMR 로고">
+      <router-link to="/">
+        <img class="logo" src="../assets/images/logo.png" alt="My LOL MMR 로고">
+      </router-link>
       <AppSearchBox></AppSearchBox>
     </header>
 </template>
