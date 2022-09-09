@@ -15,6 +15,10 @@
                     <div class="card_avg_img_box">
                         <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
                     </div>
+                    <div class="card_text">
+                        <h2>{{ $store.state.userData.ranked.closestRank }}</h2>
+                        <p>상위 {{ (100 - $store.state.userData.ranked.percentile).toFixed(2) }}%</p>
+                    </div>
                 </div>
                 <div class="card">
                     <div class="card_title">
@@ -24,6 +28,10 @@
                     </div>
                     <div class="card_avg_img_box">
                         <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
+                    </div>
+                    <div class="card_text">
+                        <h2>{{ $store.state.userData.normal.closestRank }}</h2>
+                        <p>상위 {{ (100 - $store.state.userData.normal.percentile).toFixed(2) }}%</p>
                     </div>
                 </div>
                 <div class="card">
@@ -35,6 +43,10 @@
                     <div class="card_avg_img_box">
                         <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
                     </div>
+                    <div class="card_text">
+                        <h2>{{ $store.state.userData.ARAM.closestRank }}</h2>
+                        <p>상위 {{ (100 - $store.state.userData.ARAM.percentile).toFixed(2) }}%</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,11 +54,10 @@
 </template>
 
 <script lang="ts">
-    import Vue from 'vue'
+import Vue from 'vue'
 
-    export default Vue.extend({
-
-    })
+export default Vue.extend({
+})
 </script>
 
 <style scoped>
@@ -113,5 +124,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.card_text {
+    text-align: center;
 }
 </style>

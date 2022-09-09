@@ -21,6 +21,7 @@ export default new Vuex.Store({
     getUser(state, userData: searchUser): void {
       state.country = userData.country;
       state.summerName = userData.summerName;
+      state.userData = {};
 
       axios.get(`https://${state.country}.whatismymmr.com/api/v1/summoner?name=${state.summerName}`)
         .then(response => {
