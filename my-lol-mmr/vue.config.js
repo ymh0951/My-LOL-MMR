@@ -5,6 +5,6 @@ module.exports = defineConfig({
   // NODE_ENV -> 앱이 실행되는 모드 3개의 기본 모드가 있다. ("development", "production", "test")
   outputDir: '../docs',
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/my-lol-mmr/'
+    ? '/My-LOL-MMR/'
     : '/'
 })
