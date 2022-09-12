@@ -4,6 +4,9 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
+axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
+axios.defaults.withCredentials = true;
+
 interface searchUser {
   country: string,
   summerName: string
