@@ -38,7 +38,10 @@
                 }
 
                 this.$store.dispatch('searchUser', data);
-                this.$router.push(data.summerName).catch(() => { undefined });
+
+                if (this.$store.state.userData) {
+                    this.$router.push(data.summerName).catch(() => { undefined });
+                }
             },
             summerNameReset() {
                 this.summerNameInput = '';
@@ -67,7 +70,7 @@
     outline: none;
 }
 .country_select {
-    width: 25%;
+    width: 30%;
 }
 .summer_name {
     width: 60%;

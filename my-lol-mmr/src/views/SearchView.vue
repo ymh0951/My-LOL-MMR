@@ -9,43 +9,61 @@
                 <div class="card">
                     <div class="card_title">
                         <h2>랭크</h2>
-                        <h1 v-if="$store.state.userData.ranked.avg">{{ $store.state.userData.ranked.avg }}</h1>
+                        <h1 v-if="$store.state.userData.ranked.avg">
+                            {{ $store.state.userData.ranked.avg }} 
+                            <small>±{{ $store.state.userData.ranked.err }}</small>
+                        </h1>
                         <p v-else>데이터가 부족합니다</p>
                     </div>
                     <div class="card_avg_img_box">
-                        <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
+                        <img :src="require(`../assets/images/${$store.state.userDataClosestRank.rank}.png`)" alt="슬픈 꿀벌">
                     </div>
-                    <div class="card_text">
+                    <div class="card_text" v-if="$store.state.userData.ranked.avg">
                         <h2>{{ $store.state.userData.ranked.closestRank }}</h2>
-                        <p>상위 {{ (100 - $store.state.userData.ranked.percentile).toFixed(2) }}%</p>
+                        <p>{{ $store.getters.differenceRanked }}</p>
+                    </div>
+                    <div class="card_text" v-else>
+                        <p>데이터가 부족합니다</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card_title">
                         <h2>일반</h2>
-                        <h1 v-if="$store.state.userData.normal.avg">{{ $store.state.userData.normal.avg }}</h1>
+                        <h1 v-if="$store.state.userData.normal.avg">
+                            {{ $store.state.userData.normal.avg }}
+                            <small>±{{ $store.state.userData.normal.err }}</small>
+                        </h1>
                         <p v-else>데이터가 부족합니다</p>
                     </div>
                     <div class="card_avg_img_box">
-                        <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
+                        <img :src="require(`../assets/images/${$store.state.userDataClosestRank.normal}.png`)" alt="슬픈 꿀벌">
                     </div>
-                    <div class="card_text">
+                    <div class="card_text" v-if="$store.state.userData.normal.avg">
                         <h2>{{ $store.state.userData.normal.closestRank }}</h2>
-                        <p>상위 {{ (100 - $store.state.userData.normal.percentile).toFixed(2) }}%</p>
+                        <p>{{ $store.getters.differenceNormal }}</p>
+                    </div>
+                    <div class="card_text" v-else>
+                        <p>데이터가 부족합니다</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card_title">
-                        <h2>칼바람 나락</h2>
-                        <h1 v-if="$store.state.userData.ARAM.avg">{{ $store.state.userData.ARAM.avg }}</h1>
+                        <h2>무작위 총력전</h2>
+                        <h1 v-if="$store.state.userData.ARAM.avg">
+                            {{ $store.state.userData.ARAM.avg }}
+                            <small>±{{ $store.state.userData.ARAM.err }}</small>
+                        </h1>
                         <p v-else>데이터가 부족합니다</p>
                     </div>
                     <div class="card_avg_img_box">
-                        <img src="../assets/images/sad.png" alt="슬픈 꿀벌">
+                        <img :src="require(`../assets/images/${$store.state.userDataClosestRank.ARAM}.png`)" alt="슬픈 꿀벌">
                     </div>
-                    <div class="card_text">
+                    <div class="card_text" v-if="$store.state.userData.ARAM.avg">
                         <h2>{{ $store.state.userData.ARAM.closestRank }}</h2>
-                        <p>상위 {{ (100 - $store.state.userData.ARAM.percentile).toFixed(2) }}%</p>
+                        <p>{{ $store.getters.differenceARAM }}</p>
+                    </div>
+                    <div class="card_text" v-else>
+                        <p>데이터가 부족합니다</p>
                     </div>
                 </div>
             </div>
@@ -107,14 +125,18 @@ export default Vue.extend({
 .card_title {
     height: 80px;
     padding: 0 20px;
-    display: flex;
+    margin-top: 20px;
+    /* display: flex; */
     align-items: center ;
 }
 .card_title h2 {
     margin-right: 15px;
 }
 .card_title h1 {
-    font-size: 40px;
+    font-size: 36px;
+}
+.card_title small {
+    font-size: 19px;
 }
 .card_title p {
     color: #FF6D6D;
@@ -124,6 +146,10 @@ export default Vue.extend({
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.card_avg_img_box img {
+    width: 200px;
+    height: 200px;
 }
 .card_text {
     text-align: center;
