@@ -1,6 +1,6 @@
 <template>
-    <footer class="app-footer">
-      <div class="footer-text">
+    <footer class="app_footer">
+      <div class="footer_text">
         <p>API Support</p>
         <a href="https://na.whatismymmr.com/" target="_blank">What is MMR?</a>
       </div>
@@ -12,16 +12,22 @@
 </script>
 
 <style scoped>
-.footer-text {
+.app_footer {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  background-color: #04001E;
+}
+.footer_text {
   width: 220px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.footer-text p, .footer-text a {
+.footer_text p, .footer_text a {
   color: #C7C7C7;
 }
-.footer-text a {
+.footer_text a {
   text-decoration: underline;
   color: white;
 }
