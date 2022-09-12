@@ -2,7 +2,7 @@
     <footer class="app-footer">
       <div class="footer-text">
         <p>API Support</p>
-        <a href="https://na.whatismymmr.com/">What is MMR?</a>
+        <a href="https://na.whatismymmr.com/" target="_blank">What is MMR?</a>
       </div>
     </footer>
 </template>
