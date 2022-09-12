@@ -40,7 +40,7 @@
                 this.$store.dispatch('searchUser', data);
 
                 if (this.$store.state.userData) {
-                    this.$router.push(data.summerName).catch(() => { undefined });
+                    this.$router.push(`/search/${data.summerName}`).catch(() => { undefined });
                 }
             },
             summerNameReset() {

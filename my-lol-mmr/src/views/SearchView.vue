@@ -1,6 +1,6 @@
 <template>
     <div class="search_view">
-        <div class="search_box">
+        <div class="search_box" v-if="$store.state.spinner">
             <div class="search_title">
                 <span class="search_title_span">{{ $store.state.country.toUpperCase() }}</span>
                 <h1 class="search_title_h1">{{ $store.state.summerName }}</h1>
@@ -68,13 +68,18 @@
                 </div>
             </div>
         </div>
+        <AppSpinner v-else></AppSpinner>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import AppSpinner from '../components/AppSpinner.vue';
 
 export default Vue.extend({
+    components: {
+        AppSpinner
+    }
 })
 </script>
 

@@ -18,7 +18,8 @@ export default new Vuex.Store({
       rank: '' as string,
       normal: '' as string,
       ARAM: '' as string
-    }
+    },
+    spinner: false,
   },
   getters: {
     differenceRanked(state) {
@@ -36,6 +37,7 @@ export default new Vuex.Store({
       state.country = userData.country;
       state.summerName = userData.summerName;
       state.userData = {};
+      state.spinner = false;
 
       axios.get(`https://${state.country}.whatismymmr.com/api/v1/summoner?name=${state.summerName}`)
         .then(response => {
@@ -58,11 +60,21 @@ export default new Vuex.Store({
           } else {
             state.userDataClosestRank.ARAM = 'sad';
           }
+
+          state.spinner = true;
         })
         .catch(err => {
-          if (err.response.data.error.code === 100) alert('일치하는 유저가 없습니다.');
-          else if (err.response.data.error.code === 9001) alert('요청이 너무 많습니다.');
-          else alert('예기치 않는 내부 서버 오류입니다.');
+          if (err.response.data.error.code === 100) {
+            alert('일치하는 유저가 없습니다.'); 
+            location.href = '/';
+            
+          } else if (err.response.data.error.code === 9001) {
+            alert('요청이 너무 많습니다.');
+            location.href = '/';
+          } else {
+            alert('예기치 않는 내부 서버 오류입니다.');
+            location.href = '/';
+          }
         })
     }
   },
