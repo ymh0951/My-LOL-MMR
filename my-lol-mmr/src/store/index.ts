@@ -2,10 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-Vue.use(Vuex)
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'https://ymh0951.github.io';
 
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-axios.defaults.withCredentials = true;
+Vue.use(Vuex)
 
 interface searchUser {
   country: string,
