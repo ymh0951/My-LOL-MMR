@@ -2,7 +2,7 @@
   <div class="home_view">
     <div class="search_card">
       <img src="../assets/images/logo.png" alt="My LOL MMR Logo" class="logo">
-      <AppSearchBox style="width: 95%; margin-top: 40px;"></AppSearchBox>
+      <AppSearchBox style="width: 85%; margin: 0 auto; margin-top: 40px;"></AppSearchBox>
     </div>
   </div>
 </template>
