@@ -159,4 +159,18 @@ export default Vue.extend({
 .card_text {
     text-align: center;
 }
+@media screen and (max-width: 1200px) {
+    .search_view {
+        overflow-y: scroll;
+    }
+    .search_card_box {
+        display: block;
+    }
+    .card {
+        margin: 0 auto;
+    }
+    .card_title h2 {
+        padding-top: 20px;
+    }
+}
 </style>

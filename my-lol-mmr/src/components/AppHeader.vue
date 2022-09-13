@@ -19,6 +19,11 @@
 </script>
 
 <style scoped>
+@media screen and (max-width: 550px) {
+  .app_header img {
+    display: none;
+  }
+}
 .app_header {
   width: 100%;
   height: 60px;
