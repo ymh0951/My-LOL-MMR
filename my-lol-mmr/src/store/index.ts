@@ -67,14 +67,14 @@ export default new Vuex.Store({
         .catch(err => {
           if (err.response.data.error.code === 100) {
             alert('일치하는 유저가 없습니다.'); 
-            location.href = '/';
+            location.href = 'https://ymh0951.github.io/My-LOL-MMR/';
             
           } else if (err.response.data.error.code === 9001) {
             alert('요청이 너무 많습니다.');
-            location.href = '/';
+            location.href = 'https://ymh0951.github.io/My-LOL-MMR/';
           } else {
             alert('예기치 않는 내부 서버 오류입니다.');
-            location.href = '/';
+            location.href = 'https://ymh0951.github.io/My-LOL-MMR/';
           }
         })
     }
