@@ -40,7 +40,7 @@ export default new Vuex.Store({
       state.userData = {};
       state.spinner = false;
 
-      axios.get(`https://cors-anywhere.herokuapp.com/https://${state.country}.whatismymmr.com/api/v1/summoner?name=${state.summerName}`)
+      axios.get(`https://proxy.cors.sh/https://${state.country}.whatismymmr.com/api/v1/summoner?name=${state.summerName}`)
         .then(response => {
           state.userData = response.data;
 
