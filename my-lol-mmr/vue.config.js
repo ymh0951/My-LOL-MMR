@@ -7,24 +7,4 @@ module.exports = defineConfig({
   publicPath: process.env.NODE_ENV === 'production'
     ? '/My-LOL-MMR/'
     : '/',
-  devServer: {
-    proxy: {
-      '/na': {
-        target: 'https://na.whatismymmr.com/',
-        changeOrigin: true,
-      },
-      '/euw': {
-        target: 'https://euw.whatismymmr.com/',
-        changeOrigin: true,
-      },
-      '/eune': {
-        target: 'https://eune.whatismymmr.com/',
-        changeOrigin: true,
-      },
-      '/kr': {
-        target: 'https://kr.whatismymmr.com/',
-        changeOrigin: true,
-      }
-    }
-  }
 })
