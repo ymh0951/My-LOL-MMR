@@ -21,7 +21,7 @@ export default new Vuex.Store({
       ARAM: '' as string
     },
     spinner: false,
-    searchData: [] as object[],
+    searchData: [] as searchUser[],
   },
   getters: {
     differenceRanked(state) {
@@ -65,8 +65,10 @@ export default new Vuex.Store({
 
           state.spinner = true;
 
-          if (state.searchData.indexOf(userData) !== -1) {
-            state.searchData.splice(state.searchData.indexOf(userData), 1);
+          for (let i = 0; i < state.searchData.length; i++) {
+            if (state.searchData[i].summerName === userData.summerName) {
+              state.searchData.splice(i, 1);
+            }
           }
 
           state.searchData.unshift(userData);
