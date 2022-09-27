@@ -140,7 +140,7 @@
     background-color: #8d8cff;
 }
 .data_summer_name {
-    width: 250px;
+    width: 75%;
     margin-left: 15px;
     display: inline-block;
     cursor: pointer;
