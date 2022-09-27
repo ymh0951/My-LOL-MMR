@@ -21,6 +21,7 @@ export default new Vuex.Store({
       ARAM: '' as string
     },
     spinner: false,
+    searchData: [] as object[],
   },
   getters: {
     differenceRanked(state) {
@@ -63,6 +64,14 @@ export default new Vuex.Store({
           }
 
           state.spinner = true;
+
+          if (state.searchData.indexOf(userData) !== -1) {
+            state.searchData.splice(state.searchData.indexOf(userData), 1);
+          }
+
+          state.searchData.unshift(userData);
+          localStorage.setItem('userSearch', JSON.stringify(state.searchData));
+
         })
         .catch(err => {
           if (err.response.data.error.code === 100) {
@@ -77,11 +86,27 @@ export default new Vuex.Store({
             location.href = 'https://ymh0951.github.io/My-LOL-MMR/';
           }
         })
-    }
+    },
+    getSearchData(state) {
+      const localsearchData: object | any = localStorage.getItem('userSearch');
+
+      state.searchData = JSON.parse(localsearchData) || [];
+    },
+    deleteSearchData(state, index) {
+      state.searchData.splice(index, 1);
+
+      localStorage.setItem('userSearch', JSON.stringify(state.searchData));
+    } 
   },
   actions: {
     searchUser({ commit }, userData) {
       commit('getUser', userData);
+    },
+    getSearchData({ commit }) {
+      commit('getSearchData');
+    },
+    deleteSearchData({ commit }, index) {
+      commit('deleteSearchData', index);
     }
   },
   modules: {

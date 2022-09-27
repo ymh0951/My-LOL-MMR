@@ -1,5 +1,5 @@
 <template>
-    <div class="search_box">
+    <div class="search_box" @click="searchMouseClick">
         <select class="country_select" v-model="countrySelect">
             <option value="na">NA</option>
             <option value="euw">EUW</option>
@@ -12,6 +12,13 @@
             <i class="fa fas fa-search" v-if="!summerNameInput"></i>
             <i class="fa fas fa-times" @click="summerNameReset" v-else></i>
         </div>
+        <ul class="search_list" v-if="searchClick">
+            <li class="search" v-for="(data, index) in $store.state.searchData" :key="index">
+                <span class="data_country">{{ data.country.toUpperCase() }}</span>
+                <span class="data_summer_name" @click="searchUserClick(data)">{{ data.summerName }}</span>
+                <i class="fa fas fa-times" @click="deleteSearchData(index)"></i>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -22,7 +29,8 @@
         data() {
             return {
                 countrySelect: 'kr' as string,
-                summerNameInput: '' as string
+                summerNameInput: '' as string,
+                searchClick: false,
             }
         },
         methods: {
@@ -46,6 +54,21 @@
             summerNameReset() {
                 this.summerNameInput = '';
             },
+            searchUserClick(data) {
+                this.$store.dispatch('searchUser', data);
+
+                if (this.$store.state.userData) {
+                    this.$router.push(`/search/${data.summerName}`).catch(() => { undefined });
+                }
+            },
+            searchMouseClick() {
+                this.searchClick = !this.searchClick;
+            },
+            deleteSearchData(index) {
+                const idx = index;
+
+                this.$store.dispatch('deleteSearchData', idx);
+            }
         },
     })
 </script>
@@ -59,6 +82,7 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
+    position: relative;
     background-color: white;
 }
 .country_select, .summer_name {
@@ -89,6 +113,36 @@
     color: #A6A6A6;
 }
 .fa-times {
+    cursor: pointer;
+}
+.search_list {
+    width: 100%;
+    top: 100%;
+    left: 0;
+    padding: 10px 0;
+    position: absolute;
+    border: 1px solid #A6A6A6;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+}
+.search {
+    padding: 5px 10px;
+    background-color: white;
+}
+.search:hover .summer_name{
+    text-decoration: underline;
+}
+.data_country {
+    color: white;
+    border-radius: 5px;
+    padding: 2px 8px;
+    background-color: #8d8cff;
+}
+.data_summer_name {
+    width: 250px;
+    margin-left: 15px;
+    display: inline-block;
     cursor: pointer;
 }
 </style>

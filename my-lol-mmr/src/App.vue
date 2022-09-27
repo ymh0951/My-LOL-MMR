@@ -15,7 +15,10 @@ export default Vue.extend({
   components: {
     AppFooter,
     AppHeader
-},
+  },
+  created () {
+    this.$store.dispatch('getSearchData');
+  },
 })
 </script>
 
