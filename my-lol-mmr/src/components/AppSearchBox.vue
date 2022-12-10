@@ -1,5 +1,5 @@
 <template>
-    <div class="search_box" @click="searchMouseClick">
+    <div class="search_box">
         <select class="country_select" v-model="countrySelect">
             <option value="na">NA</option>
             <option value="euw">EUW</option>
@@ -7,7 +7,7 @@
             <option value="kr" selected>KR</option>
         </select>
         <span class="line"></span>
-        <input class="summer_name" placeholder="소환사명" v-model="summerNameInput" @keyup.enter="summerNameSearch">
+        <input class="summer_name" placeholder="소환사명" v-model="summerNameInput" @keyup.enter="summerNameSearch" @click="searchMouseClick">
         <div class="icon_box">
             <i class="fa fas fa-search" v-if="!summerNameInput"></i>
             <i class="fa fas fa-times" @click="summerNameReset" v-else></i>
