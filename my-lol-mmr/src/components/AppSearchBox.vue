@@ -50,6 +50,9 @@
                 if (this.$store.state.userData) {
                     this.$router.push(`/search/${data.summerName}`).catch(() => { undefined });
                 }
+
+                this.summerNameInput = '';
+                this.searchClick = false;
             },
             summerNameReset() {
                 this.summerNameInput = '';
@@ -60,6 +63,9 @@
                 if (this.$store.state.userData) {
                     this.$router.push(`/search/${data.summerName}`).catch(() => { undefined });
                 }
+
+                this.summerNameInput = '';
+                this.searchClick = false;
             },
             searchMouseClick() {
                 this.searchClick = !this.searchClick;
