@@ -35,7 +35,7 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    getUser(state, userData: searchUser): void {
+    GET_USER(state, userData: searchUser): void {
       state.country = userData.country;
       state.summerName = userData.summerName;
       state.userData = {};
@@ -89,12 +89,12 @@ export default new Vuex.Store({
           }
         })
     },
-    getSearchData(state) {
+    GET_SEARCH_DATA(state) {
       const localsearchData: object | any = localStorage.getItem('userSearch');
 
       state.searchData = JSON.parse(localsearchData) || [];
     },
-    deleteSearchData(state, index) {
+    DELETE_SEARCH_DATA(state, index) {
       state.searchData.splice(index, 1);
 
       localStorage.setItem('userSearch', JSON.stringify(state.searchData));
@@ -102,13 +102,13 @@ export default new Vuex.Store({
   },
   actions: {
     searchUser({ commit }, userData) {
-      commit('getUser', userData);
+      commit('GET_USER', userData);
     },
     getSearchData({ commit }) {
-      commit('getSearchData');
+      commit('GET_SEARCH_DATA');
     },
-    deleteSearchData({ commit }, index) {
-      commit('deleteSearchData', index);
+    DELETE_SEARCH_DATA({ commit }, index) {
+      commit('DELETE_SEARCH_DATA', index);
     }
   },
   modules: {

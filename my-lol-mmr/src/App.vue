@@ -17,7 +17,7 @@ export default Vue.extend({
     AppHeader
   },
   created () {
-    this.$store.dispatch('getSearchData');
+    this.$store.dispatch('GET_SEARCH_DATA');
   },
 })
 </script>
