@@ -101,10 +101,10 @@ export default new Vuex.Store({
     } 
   },
   actions: {
-    searchUser({ commit }, userData) {
+    GET_USER({ commit }, userData) {
       commit('GET_USER', userData);
     },
-    getSearchData({ commit }) {
+    GET_SEARCH_DATA({ commit }) {
       commit('GET_SEARCH_DATA');
     },
     DELETE_SEARCH_DATA({ commit }, index) {

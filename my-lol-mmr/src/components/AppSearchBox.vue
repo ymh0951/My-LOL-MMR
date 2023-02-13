@@ -45,7 +45,7 @@
                     summerName: this.summerNameInput
                 }
 
-                this.$store.dispatch('SEARCH_USER', data);
+                this.$store.dispatch('GET_USER', data);
 
                 if (this.$store.state.userData) {
                     this.$router.push(`/search/${data.summerName}`).catch(() => { undefined });
@@ -58,7 +58,7 @@
                 this.summerNameInput = '';
             },
             searchUserClick(data) {
-                this.$store.dispatch('SEARCH_USER', data);
+                this.$store.dispatch('GET_USER', data);
 
                 if (this.$store.state.userData) {
                     this.$router.push(`/search/${data.summerName}`).catch(() => { undefined });
@@ -73,7 +73,7 @@
             deleteSearchData(index) {
                 const idx = index;
 
-                this.$store.dispatch('DELETE_SEARCH_USER', idx);
+                this.$store.dispatch('DELETE_SEARCH_DATA', idx);
             }
         },
     })
